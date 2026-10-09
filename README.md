@@ -4,7 +4,7 @@ Projet **NoSQL** en deux volets : une base **MongoDB** construite à partir d'un
 
 **Stack :** MongoDB · Python (pandas, pymongo) · JavaScript, HTML, CSS
 
-> Démo interactive de l'application : **[lien à ajouter après la mise en ligne du portfolio]**
+> Démo interactive de l'application : 
 
 ![Capture de l'application](docs/app.png)
 
