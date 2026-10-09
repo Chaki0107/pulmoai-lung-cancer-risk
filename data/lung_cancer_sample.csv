@@ -1,0 +1,151 @@
+Patient_ID,Country,Age,Gender,Smoking_Status,Cigarettes_Per_Day,Years_Smoking,Secondhand_Smoke,Family_History,Occupational_Hazard,Air_Pollution_Exposure,Alcohol_Use,BMI,Exercise_Frequency,Asbestos_Exposure,Radon_Exposure,Previous_Cancer_History,Coughing,Shortness_of_Breath,Chest_Pain,Coughing_Blood,Fatigue,Weight_Loss,Wheezing,Recurrent_Infections,Swallowing_Difficulty,Finger_Clubbing,Cancer_Stage,Diagnosis_Method,Treatment,Survival_Months,Survived
+LC-0034,Vietnam,62,Male,Current Smoker,39,30,No,Yes,No,Low,Moderate,23.5,Low,No,No,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,Yes,Stage II,PET Scan,Chemotherapy,43,Yes
+LC-0038,Italy,55,Female,Never Smoked,0,0,Yes,No,No,Low,No Alcohol,25.7,Moderate,No,No,Yes,No,No,Yes,No,Yes,No,No,No,No,No,Stage I,Chest X-Ray,Surgery,64,Yes
+LC-0042,Singapore,70,Male,Current Smoker,17,29,No,Yes,No,Moderate,Moderate,31.5,Low,No,No,No,Yes,Yes,Yes,Yes,Yes,No,Yes,No,Yes,No,Stage IV,Biopsy,Radiotherapy,10,No
+LC-0045,South Korea,68,Male,Current Smoker,30,29,Yes,No,No,High,Moderate,23.5,High,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Stage III,PET Scan,Chemo + Radiation,10,No
+LC-0054,Argentina,45,Male,Never Smoked,0,0,Yes,No,No,Moderate,Heavy,22.4,Low,No,No,No,No,Yes,No,No,No,No,No,Yes,No,No,Stage II,Biopsy,Surgery + Chemotherapy,42,Yes
+LC-0080,Egypt,57,Female,Never Smoked,0,0,No,No,No,High,No Alcohol,28.3,Moderate,No,No,No,No,Yes,No,No,Yes,No,No,No,No,No,Stage IV,Chest X-Ray,Chemotherapy,6,No
+LC-0087,Bhutan,49,Male,Current Smoker,19,22,No,No,No,High,Moderate,28.3,Moderate,No,No,No,Yes,Yes,No,Yes,Yes,Yes,No,Yes,No,No,Stage III,CT Scan,Targeted Therapy,17,No
+LC-0093,Canada,45,Female,Never Smoked,0,0,Yes,No,No,Low,No Alcohol,28.0,High,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage II,CT Scan,Chemotherapy,20,No
+LC-0095,Thailand,38,Female,Never Smoked,0,0,No,Yes,No,High,No Alcohol,25.9,Moderate,No,No,No,No,Yes,No,No,No,No,No,No,No,No,Stage IV,Chest X-Ray,Immunotherapy,7,No
+LC-0102,New Zealand,68,Male,Current Smoker,11,15,No,No,No,Moderate,No Alcohol,30.6,High,No,No,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Stage IV,Biopsy,Chemotherapy,1,No
+LC-0105,Philippines,55,Male,Never Smoked,0,0,Yes,No,No,High,No Alcohol,29.9,High,No,No,No,No,Yes,Yes,No,No,No,Yes,No,Yes,Yes,Stage I,LDCT Screening,Surgery,53,No
+LC-0107,Timor-Leste,50,Male,Never Smoked,0,0,No,No,Yes,Moderate,No Alcohol,26.9,Low,No,Yes,Yes,No,Yes,No,No,No,No,No,Yes,No,No,Stage III,Bronchoscopy,Chemo + Radiation,21,No
+LC-0114,Netherlands,55,Male,Never Smoked,0,0,Yes,No,No,Moderate,Heavy,34.3,Low,No,No,No,Yes,No,Yes,No,Yes,Yes,No,No,No,No,Stage II,CT Scan,Chemotherapy,33,Yes
+LC-0129,Germany,54,Male,Current Smoker,30,35,No,No,Yes,Moderate,No Alcohol,26.6,Low,Yes,No,No,Yes,Yes,Yes,Yes,No,Yes,No,Yes,No,No,Stage III,Biopsy,Chemotherapy,27,Yes
+LC-0152,Sri Lanka,71,Male,Current Smoker,5,30,No,Yes,No,High,No Alcohol,28.0,High,No,No,No,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,Stage IV,Bronchoscopy,Immunotherapy,10,No
+LC-0159,South Korea,51,Female,Never Smoked,0,0,No,No,No,Low,No Alcohol,28.9,Moderate,No,Yes,No,Yes,Yes,No,No,No,No,Yes,No,No,No,Stage II,Bronchoscopy,Surgery,41,Yes
+LC-0166,Australia,79,Male,Never Smoked,0,0,No,Yes,No,High,No Alcohol,27.7,Moderate,No,Yes,No,No,No,No,No,Yes,No,Yes,No,No,No,Stage I,CT Scan,Radiotherapy,70,Yes
+LC-0167,Iraq,73,Male,Current Smoker,20,34,No,No,Yes,High,Heavy,31.5,Moderate,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,No,No,Stage III,PET Scan,Chemo + Radiation,21,No
+LC-0179,Venezuela,56,Female,Never Smoked,0,0,No,No,Yes,Moderate,Heavy,32.0,Low,No,No,No,No,No,No,No,Yes,No,No,Yes,No,No,Stage II,Bronchoscopy,Chemotherapy,25,Yes
+LC-0183,Australia,55,Male,Current Smoker,31,30,No,Yes,No,Low,Moderate,26.3,Moderate,No,No,No,No,Yes,Yes,No,Yes,Yes,Yes,No,No,Yes,Stage IV,PET Scan,Immunotherapy,4,No
+LC-0184,Japan,69,Male,Current Smoker,23,33,No,Yes,No,High,Moderate,20.9,Moderate,No,No,No,Yes,Yes,No,No,Yes,No,No,No,Yes,No,Stage II,CT Scan,Targeted Therapy,6,Yes
+LC-0187,Netherlands,50,Male,Never Smoked,0,0,No,No,No,Low,Moderate,30.3,Moderate,No,No,No,No,No,No,Yes,Yes,No,No,No,No,No,Stage III,CT Scan,Surgery + Chemotherapy,34,No
+LC-0196,Sweden,89,Male,Current Smoker,22,42,No,Yes,No,Low,No Alcohol,29.2,Moderate,No,No,No,No,Yes,No,Yes,Yes,No,Yes,No,No,Yes,Stage III,CT Scan,Chemotherapy,9,Yes
+LC-0210,Australia,68,Male,Never Smoked,0,0,Yes,No,No,Low,Heavy,25.2,Low,No,No,No,No,Yes,Yes,No,No,Yes,Yes,No,No,No,Stage IV,CT Scan,Palliative Care,9,No
+LC-0219,Cuba,67,Male,Current Smoker,38,44,No,No,Yes,Moderate,Moderate,28.2,Low,No,No,No,No,No,No,No,Yes,No,Yes,No,No,No,Stage I,LDCT Screening,Surgery + Chemotherapy,83,No
+LC-0224,Egypt,55,Male,Never Smoked,0,0,Yes,Yes,Yes,Moderate,No Alcohol,25.1,High,No,No,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Yes,Stage I,Chest X-Ray,Surgery,37,No
+LC-0225,Japan,58,Male,Never Smoked,0,0,Yes,Yes,No,Moderate,Moderate,20.1,Low,No,No,No,No,Yes,Yes,No,No,No,No,Yes,No,No,Stage I,CT Scan,Immunotherapy,60,Yes
+LC-0232,New Zealand,41,Male,Never Smoked,0,0,Yes,Yes,Yes,High,Moderate,23.0,Moderate,Yes,No,No,Yes,Yes,Yes,No,Yes,Yes,Yes,No,No,No,Stage II,CT Scan,Chemotherapy,49,Yes
+LC-0233,Mexico,57,Male,Current Smoker,17,8,No,Yes,No,Low,Moderate,31.9,Low,No,No,No,Yes,Yes,No,Yes,No,No,Yes,Yes,No,No,Stage III,CT Scan,Chemo + Radiation,11,No
+LC-0234,Mongolia,60,Male,Former Smoker,12,12,No,No,No,Moderate,Moderate,30.4,Low,No,No,No,Yes,No,Yes,No,Yes,Yes,No,No,No,No,Stage III,LDCT Screening,Chemotherapy,26,No
+LC-0237,Turkey,74,Male,Current Smoker,28,46,Yes,Yes,No,Moderate,No Alcohol,33.0,Low,No,No,No,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Stage II,Bronchoscopy,Surgery + Chemotherapy,9,Yes
+LC-0240,Turkey,49,Female,Current Smoker,31,19,Yes,No,No,High,Moderate,19.9,High,No,No,No,No,Yes,Yes,Yes,No,No,No,No,No,No,Stage I,LDCT Screening,Targeted Therapy,51,Yes
+LC-0241,Malaysia,49,Female,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,29.1,Low,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,Stage I,LDCT Screening,Surgery,49,No
+LC-0248,Morocco,63,Female,Never Smoked,0,0,No,Yes,No,High,No Alcohol,28.1,Low,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage I,Bronchoscopy,Surgery,74,Yes
+LC-0261,Myanmar,55,Female,Never Smoked,0,0,Yes,No,No,High,Heavy,22.7,Low,No,No,No,Yes,Yes,No,No,No,No,No,Yes,No,No,Stage I,CT Scan,Surgery,68,Yes
+LC-0283,Australia,52,Male,Current Smoker,27,29,Yes,No,Yes,Moderate,No Alcohol,22.4,Low,No,No,No,Yes,No,Yes,No,Yes,Yes,Yes,Yes,No,No,Stage IV,CT Scan,Palliative Care,16,No
+LC-0284,Poland,80,Male,Never Smoked,0,0,No,Yes,No,Low,Heavy,31.5,High,No,No,No,Yes,No,Yes,No,No,No,No,No,No,No,Stage IV,Bronchoscopy,Targeted Therapy,1,No
+LC-0300,Netherlands,52,Male,Current Smoker,26,26,Yes,Yes,No,Moderate,Heavy,23.5,High,No,No,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Stage II,Chest X-Ray,Chemotherapy,39,Yes
+LC-0320,Vietnam,71,Female,Never Smoked,0,0,Yes,No,No,High,Moderate,26.7,Moderate,No,No,No,Yes,No,No,No,No,No,No,Yes,No,Yes,Stage III,CT Scan,Chemotherapy,16,No
+LC-0325,Mongolia,69,Male,Never Smoked,0,0,No,No,No,High,No Alcohol,19.1,High,No,No,No,No,Yes,No,No,Yes,No,No,No,No,No,Stage I,CT Scan,Surgery,73,Yes
+LC-0326,Italy,62,Male,Current Smoker,27,27,No,Yes,No,High,Moderate,30.5,Low,No,No,No,Yes,No,No,No,Yes,Yes,No,Yes,No,No,Stage III,MRI,Chemotherapy,7,No
+LC-0335,Philippines,74,Male,Never Smoked,0,0,Yes,No,Yes,Moderate,Moderate,29.5,High,No,No,No,Yes,No,Yes,No,No,No,No,No,No,No,Stage III,PET Scan,Chemotherapy,13,No
+LC-0337,Qatar,64,Male,Never Smoked,0,0,Yes,No,Yes,High,Heavy,25.6,Moderate,No,No,No,Yes,No,No,No,Yes,No,No,No,No,No,Stage II,CT Scan,Targeted Therapy,31,No
+LC-0346,Netherlands,52,Female,Never Smoked,0,0,Yes,Yes,No,Low,Moderate,26.9,Low,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Stage IV,CT Scan,Chemotherapy,17,No
+LC-0349,Indonesia,50,Male,Never Smoked,0,0,No,No,No,Moderate,Heavy,24.9,Low,No,No,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,Stage I,CT Scan,Radiotherapy,21,Yes
+LC-0382,Saudi Arabia,77,Female,Current Smoker,29,45,No,Yes,No,Low,Heavy,24.1,High,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Stage IV,Chest X-Ray,Chemotherapy,10,No
+LC-0401,Singapore,74,Female,Never Smoked,0,0,No,No,No,Low,Moderate,23.7,High,No,No,No,No,Yes,No,No,Yes,No,No,Yes,No,Yes,Stage III,CT Scan,Chemotherapy,11,No
+LC-0444,Malaysia,76,Male,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,30.0,Low,No,No,No,Yes,No,No,No,Yes,Yes,No,No,No,No,Stage I,Bronchoscopy,Surgery,75,No
+LC-0472,Mongolia,58,Male,Never Smoked,0,0,Yes,Yes,Yes,Moderate,Moderate,22.2,Low,No,No,No,Yes,No,No,No,Yes,No,No,No,No,No,Stage III,PET Scan,Chemotherapy,18,No
+LC-0473,Japan,55,Male,Never Smoked,0,0,Yes,Yes,No,High,Moderate,24.6,Low,No,No,No,Yes,Yes,No,No,Yes,No,No,No,No,No,Stage III,Bronchoscopy,Chemo + Radiation,20,No
+LC-0488,Russia,79,Male,Current Smoker,33,47,Yes,No,Yes,High,Moderate,20.0,Low,No,Yes,No,Yes,No,Yes,Yes,No,Yes,No,Yes,No,No,Stage II,Biopsy,Chemotherapy,28,No
+LC-0489,Argentina,48,Female,Never Smoked,0,0,No,No,Yes,Low,No Alcohol,27.8,Moderate,No,No,No,No,Yes,No,No,Yes,No,No,No,No,No,Stage III,PET Scan,Surgery + Chemotherapy,18,No
+LC-0498,Spain,58,Female,Never Smoked,0,0,Yes,No,No,High,Heavy,28.2,Low,No,No,No,Yes,No,Yes,No,Yes,Yes,Yes,No,No,No,Stage III,Bronchoscopy,Targeted Therapy,20,No
+LC-0511,India,39,Female,Former Smoker,19,11,No,No,Yes,Moderate,No Alcohol,30.0,High,No,No,No,No,Yes,Yes,Yes,No,Yes,No,Yes,No,Yes,Stage IV,Biopsy,Radiotherapy,19,No
+LC-0522,Canada,55,Male,Never Smoked,0,0,Yes,No,Yes,Low,Heavy,25.1,High,No,No,No,Yes,No,Yes,Yes,No,No,No,No,No,No,Stage II,Biopsy,Chemotherapy,18,Yes
+LC-0526,Maldives,60,Female,Former Smoker,15,10,No,No,No,High,No Alcohol,31.9,Low,No,No,No,Yes,Yes,No,No,No,Yes,No,No,No,No,Stage I,LDCT Screening,Radiotherapy,44,Yes
+LC-0531,Canada,65,Male,Never Smoked,0,0,No,No,No,High,Moderate,29.0,Low,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage I,CT Scan,Surgery,60,Yes
+LC-0542,Canada,62,Male,Current Smoker,34,20,Yes,Yes,No,High,Moderate,25.4,Moderate,No,No,No,Yes,No,Yes,Yes,No,No,Yes,No,Yes,Yes,Stage IV,PET Scan,Chemotherapy,1,No
+LC-0569,Turkey,64,Male,Never Smoked,0,0,No,No,No,Low,No Alcohol,24.3,Low,No,No,No,No,No,Yes,No,Yes,No,No,No,No,No,Stage IV,CT Scan,Palliative Care,4,No
+LC-0573,South Africa,53,Male,Current Smoker,24,25,No,Yes,No,High,Moderate,31.1,High,No,No,No,Yes,Yes,Yes,No,Yes,No,No,Yes,No,No,Stage IV,CT Scan,Palliative Care,5,No
+LC-0592,South Africa,54,Female,Never Smoked,0,0,No,No,No,High,No Alcohol,28.1,High,No,No,No,Yes,Yes,Yes,No,Yes,No,Yes,No,No,No,Stage II,CT Scan,Immunotherapy,48,No
+LC-0593,UAE,54,Male,Never Smoked,0,0,Yes,Yes,No,Moderate,Heavy,27.3,High,No,No,No,No,No,Yes,No,Yes,Yes,No,Yes,No,Yes,Stage II,CT Scan,Surgery,48,Yes
+LC-0610,Cuba,61,Female,Never Smoked,0,0,Yes,Yes,No,Moderate,Moderate,28.7,Low,No,No,No,No,Yes,No,No,Yes,No,No,Yes,No,No,Stage I,CT Scan,Surgery + Chemotherapy,77,Yes
+LC-0615,Singapore,51,Male,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,30.8,Low,No,Yes,Yes,No,Yes,No,No,Yes,Yes,No,No,No,Yes,Stage IV,PET Scan,Chemo + Radiation,3,No
+LC-0616,Oman,68,Male,Former Smoker,3,2,No,No,Yes,High,Moderate,26.5,Low,No,No,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,Stage IV,Biopsy,Immunotherapy,10,No
+LC-0622,Jordan,59,Female,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,27.0,High,No,No,No,No,Yes,No,No,Yes,Yes,No,Yes,Yes,No,Stage I,CT Scan,Radiotherapy,61,Yes
+LC-0623,Chile,80,Male,Never Smoked,0,0,Yes,No,No,Low,Moderate,32.8,Moderate,No,No,No,Yes,No,No,No,Yes,No,No,No,No,Yes,Stage III,Biopsy,Chemo + Radiation,16,No
+LC-0629,Mongolia,61,Male,Never Smoked,0,0,No,Yes,No,Low,No Alcohol,27.4,Moderate,No,No,No,No,Yes,No,Yes,Yes,Yes,No,No,No,No,Stage II,PET Scan,Targeted Therapy,21,No
+LC-0631,Indonesia,77,Male,Current Smoker,13,26,No,No,No,Moderate,Heavy,31.8,Moderate,No,No,No,Yes,Yes,Yes,No,No,Yes,No,No,No,No,Stage III,PET Scan,Immunotherapy,27,No
+LC-0640,Oman,59,Female,Never Smoked,0,0,No,No,No,Low,Moderate,24.4,Moderate,No,No,No,Yes,No,No,No,Yes,No,No,No,No,No,Stage II,MRI,Surgery + Chemotherapy,28,Yes
+LC-0643,Timor-Leste,77,Female,Former Smoker,25,23,No,Yes,No,High,No Alcohol,24.8,Low,No,No,No,No,No,Yes,No,Yes,No,No,No,No,No,Stage IV,PET Scan,Chemo + Radiation,10,No
+LC-0650,Vietnam,55,Male,Never Smoked,0,0,No,Yes,No,Moderate,Heavy,21.2,Moderate,No,No,No,Yes,No,No,No,Yes,No,No,No,No,No,Stage IV,Biopsy,Immunotherapy,1,No
+LC-0656,Mongolia,55,Female,Current Smoker,39,11,Yes,Yes,No,High,Moderate,28.2,Low,No,No,No,Yes,Yes,No,No,Yes,Yes,Yes,No,Yes,No,Stage III,MRI,Immunotherapy,10,Yes
+LC-0668,Malaysia,49,Female,Never Smoked,0,0,Yes,No,No,Low,Moderate,29.5,Moderate,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage I,LDCT Screening,Radiotherapy,53,Yes
+LC-0672,Japan,62,Female,Never Smoked,0,0,No,Yes,Yes,Moderate,No Alcohol,23.6,Moderate,No,No,No,No,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Stage III,Biopsy,Radiotherapy,28,No
+LC-0688,Saudi Arabia,60,Female,Never Smoked,0,0,No,No,No,High,No Alcohol,30.1,Low,No,No,No,No,Yes,No,Yes,Yes,No,No,Yes,No,No,Stage II,MRI,Radiotherapy,43,No
+LC-0697,Turkey,51,Male,Current Smoker,31,6,No,No,No,Moderate,Moderate,31.6,Low,No,No,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,Stage III,PET Scan,Surgery + Chemotherapy,24,No
+LC-0707,Egypt,70,Female,Never Smoked,0,0,No,Yes,No,Moderate,Heavy,27.6,Moderate,Yes,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage I,Biopsy,Surgery + Chemotherapy,77,Yes
+LC-0720,Germany,69,Male,Never Smoked,0,0,No,No,No,Low,No Alcohol,27.1,High,No,No,No,Yes,No,No,No,Yes,No,No,No,No,No,Stage II,PET Scan,Radiotherapy,50,No
+LC-0726,Nepal,73,Male,Current Smoker,34,39,Yes,Yes,No,Moderate,No Alcohol,31.1,Low,No,No,No,Yes,No,Yes,No,Yes,Yes,Yes,Yes,Yes,No,Stage III,Bronchoscopy,Immunotherapy,5,No
+LC-0731,China,58,Male,Current Smoker,25,32,No,No,No,Moderate,Moderate,18.6,Low,No,No,No,Yes,Yes,Yes,No,No,Yes,Yes,No,No,No,Stage III,CT Scan,Chemotherapy,32,No
+LC-0775,Colombia,62,Male,Never Smoked,0,0,No,Yes,No,Moderate,Moderate,22.3,High,No,No,No,No,No,No,No,Yes,Yes,No,Yes,No,Yes,Stage IV,Chest X-Ray,Radiotherapy,5,No
+LC-0776,Colombia,62,Male,Current Smoker,18,26,Yes,No,No,Low,Moderate,23.2,Low,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,Stage I,Chest X-Ray,Surgery,43,No
+LC-0781,France,57,Male,Never Smoked,0,0,No,No,No,High,No Alcohol,25.7,Low,No,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,No,Stage III,CT Scan,Immunotherapy,10,No
+LC-0786,Bhutan,52,Female,Never Smoked,0,0,Yes,No,Yes,High,Heavy,28.2,Moderate,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage II,PET Scan,Surgery,27,No
+LC-0799,Sri Lanka,73,Male,Never Smoked,0,0,No,No,No,Moderate,Moderate,24.2,Moderate,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,Stage I,LDCT Screening,Surgery,36,Yes
+LC-0869,Argentina,54,Male,Never Smoked,0,0,Yes,Yes,No,Low,Moderate,23.0,Moderate,No,No,No,No,No,Yes,Yes,Yes,No,No,No,No,No,Stage IV,CT Scan,Immunotherapy,1,No
+LC-0909,South Africa,48,Female,Current Smoker,33,23,No,No,No,Low,Moderate,32.0,Moderate,No,No,No,Yes,Yes,Yes,No,Yes,Yes,Yes,No,No,No,Stage II,MRI,Surgery + Chemotherapy,21,No
+LC-0912,Australia,65,Female,Current Smoker,22,21,No,No,Yes,High,Moderate,16.9,High,No,No,No,Yes,Yes,No,No,Yes,Yes,Yes,No,Yes,No,Stage IV,PET Scan,Immunotherapy,6,No
+LC-0931,Canada,71,Male,Former Smoker,29,21,No,Yes,No,Moderate,No Alcohol,29.3,Moderate,No,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,No,No,Stage IV,CT Scan,Palliative Care,15,Yes
+LC-0941,Singapore,61,Female,Former Smoker,22,5,No,No,Yes,High,Moderate,27.2,Moderate,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Stage II,CT Scan,Surgery + Chemotherapy,27,Yes
+LC-0945,Sweden,49,Female,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,25.6,Moderate,No,No,No,No,No,No,No,Yes,No,No,Yes,No,No,Stage IV,PET Scan,Chemotherapy,11,No
+LC-0953,Japan,74,Female,Never Smoked,0,0,Yes,No,No,High,No Alcohol,25.9,Moderate,No,No,No,No,Yes,No,Yes,No,Yes,Yes,No,No,No,Stage III,Bronchoscopy,Chemo + Radiation,10,Yes
+LC-0954,Cuba,57,Male,Never Smoked,0,0,No,Yes,No,High,No Alcohol,26.2,Low,No,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Stage I,LDCT Screening,Surgery,68,Yes
+LC-0963,Philippines,67,Male,Current Smoker,30,34,No,No,No,High,No Alcohol,23.1,Moderate,No,No,No,No,Yes,Yes,Yes,Yes,No,No,No,Yes,No,Stage II,Chest X-Ray,Surgery + Chemotherapy,34,No
+LC-0976,Jordan,54,Female,Never Smoked,0,0,No,No,No,Low,Moderate,22.8,Low,No,No,No,No,Yes,Yes,No,No,Yes,No,No,No,No,Stage III,Bronchoscopy,Chemotherapy,11,No
+LC-0977,Brazil,72,Male,Never Smoked,0,0,No,Yes,Yes,Low,No Alcohol,25.7,Moderate,No,No,Yes,Yes,No,No,No,Yes,No,Yes,No,No,No,Stage III,Chest X-Ray,Chemo + Radiation,13,No
+LC-0996,Nepal,78,Male,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,25.6,High,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage I,Chest X-Ray,Surgery,47,Yes
+LC-0997,Bhutan,56,Female,Never Smoked,0,0,No,No,No,High,No Alcohol,26.1,Moderate,Yes,No,No,No,No,No,No,No,No,Yes,No,No,Yes,Stage I,CT Scan,Radiotherapy,78,No
+LC-1001,Egypt,76,Female,Never Smoked,0,0,No,Yes,No,High,No Alcohol,33.9,Low,No,No,No,No,No,No,No,Yes,No,No,Yes,No,Yes,Stage III,Bronchoscopy,Chemo + Radiation,28,No
+LC-1031,Thailand,61,Female,Never Smoked,0,0,No,No,No,High,Moderate,30.9,Low,No,No,No,No,No,Yes,No,No,No,No,No,No,No,Stage II,Biopsy,Surgery,20,No
+LC-1035,Sweden,54,Male,Never Smoked,0,0,No,No,Yes,Low,Heavy,20.4,Low,No,No,No,No,No,No,No,Yes,No,Yes,Yes,No,No,Stage IV,PET Scan,Chemotherapy,12,No
+LC-1040,Pakistan,30,Male,Never Smoked,0,0,Yes,No,No,High,No Alcohol,27.0,Moderate,No,No,No,No,No,Yes,Yes,Yes,No,Yes,Yes,No,No,Stage I,Chest X-Ray,Surgery,107,No
+LC-1053,Oman,69,Male,Never Smoked,0,0,Yes,No,No,Low,No Alcohol,24.6,Low,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,Stage II,PET Scan,Immunotherapy,37,Yes
+LC-1056,Malaysia,47,Female,Current Smoker,27,28,No,No,Yes,Moderate,Heavy,35.8,High,No,No,No,Yes,Yes,No,No,Yes,Yes,No,No,No,No,Stage I,CT Scan,Surgery + Chemotherapy,73,No
+LC-1059,Mexico,61,Male,Former Smoker,16,8,No,No,No,Low,No Alcohol,29.5,High,No,No,No,Yes,No,Yes,No,Yes,No,No,Yes,No,No,Stage IV,CT Scan,Radiotherapy,10,No
+LC-1107,Mexico,55,Female,Current Smoker,33,13,Yes,No,No,High,Moderate,28.1,Low,No,No,No,Yes,Yes,Yes,No,No,No,Yes,No,No,No,Stage II,PET Scan,Surgery + Chemotherapy,28,Yes
+LC-1116,Sweden,59,Male,Former Smoker,10,24,No,No,Yes,Low,No Alcohol,24.2,Low,No,No,No,No,No,No,No,No,No,No,No,No,No,Stage I,LDCT Screening,Surgery,61,Yes
+LC-1130,South Korea,59,Female,Never Smoked,0,0,Yes,No,No,High,No Alcohol,35.4,High,No,No,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,Stage III,Bronchoscopy,Chemotherapy,24,No
+LC-1134,Chile,75,Male,Current Smoker,24,50,No,No,No,Low,No Alcohol,28.8,Moderate,No,No,No,Yes,Yes,No,Yes,No,No,Yes,No,No,No,Stage IV,PET Scan,Chemotherapy,4,No
+LC-1137,Bangladesh,49,Male,Former Smoker,17,7,No,No,Yes,High,Moderate,33.3,Moderate,No,Yes,No,Yes,No,No,No,Yes,No,Yes,No,No,No,Stage III,CT Scan,Surgery + Chemotherapy,21,No
+LC-1158,Myanmar,65,Male,Current Smoker,35,26,Yes,No,Yes,High,Heavy,28.9,Low,Yes,No,No,Yes,Yes,Yes,Yes,Yes,No,Yes,No,Yes,No,Stage III,Biopsy,Chemotherapy,12,No
+LC-1164,Turkey,54,Male,Never Smoked,0,0,No,Yes,No,Low,No Alcohol,26.9,Moderate,No,Yes,No,No,No,Yes,No,No,No,No,No,No,No,Stage IV,CT Scan,Immunotherapy,8,No
+LC-1187,Mongolia,83,Male,Never Smoked,0,0,Yes,No,No,Low,Moderate,25.4,Moderate,No,No,No,No,No,No,No,No,No,No,No,No,No,Stage III,CT Scan,Surgery + Chemotherapy,8,No
+LC-1204,Maldives,54,Male,Current Smoker,31,35,No,No,Yes,High,No Alcohol,21.4,Low,No,No,No,No,No,No,Yes,Yes,Yes,No,No,No,No,Stage II,Bronchoscopy,Chemotherapy,36,No
+LC-1229,Vietnam,54,Male,Current Smoker,22,31,No,No,No,Low,No Alcohol,25.6,Moderate,No,No,No,No,Yes,No,Yes,Yes,No,No,No,No,No,Stage IV,PET Scan,Chemotherapy,4,No
+LC-1230,Turkey,77,Male,Former Smoker,29,15,No,Yes,No,Low,Moderate,24.9,Low,No,No,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Yes,No,Stage III,Biopsy,Chemotherapy,20,No
+LC-1232,Turkey,71,Male,Current Smoker,37,26,No,No,No,High,No Alcohol,32.8,Moderate,No,No,No,Yes,Yes,No,Yes,Yes,No,No,Yes,No,No,Stage IV,CT Scan,Immunotherapy,4,No
+LC-1235,Spain,49,Male,Never Smoked,0,0,Yes,No,Yes,Moderate,No Alcohol,23.3,Low,No,No,No,No,No,No,No,No,No,No,Yes,Yes,No,Stage III,MRI,Chemotherapy,17,Yes
+LC-1237,Mongolia,54,Male,Current Smoker,16,19,No,No,No,Low,No Alcohol,21.2,Low,No,No,No,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,Stage IV,LDCT Screening,Chemo + Radiation,1,No
+LC-1241,Chile,61,Female,Never Smoked,0,0,No,Yes,No,High,No Alcohol,26.4,Moderate,No,No,No,No,No,No,No,No,No,No,Yes,Yes,No,Stage I,LDCT Screening,Surgery,66,Yes
+LC-1259,Canada,64,Female,Current Smoker,12,34,Yes,Yes,No,Low,Heavy,31.2,Moderate,No,No,No,No,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Stage IV,Biopsy,Chemotherapy,7,No
+LC-1269,South Korea,46,Male,Former Smoker,19,26,No,No,No,High,Heavy,29.2,Low,No,No,No,No,Yes,No,No,No,No,No,Yes,No,No,Stage I,CT Scan,Surgery,76,Yes
+LC-1270,Sweden,64,Female,Current Smoker,31,29,Yes,No,No,Low,No Alcohol,25.4,High,No,No,No,No,No,No,No,No,No,No,No,No,No,Stage III,CT Scan,Chemotherapy,17,Yes
+LC-1282,Argentina,72,Female,Never Smoked,0,0,Yes,Yes,Yes,High,Moderate,22.0,Low,No,Yes,No,Yes,No,No,Yes,No,Yes,No,No,No,No,Stage II,Biopsy,Surgery + Chemotherapy,47,Yes
+LC-1293,Brazil,68,Male,Never Smoked,0,0,No,Yes,No,Low,No Alcohol,27.7,Moderate,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,Stage II,CT Scan,Surgery,37,No
+LC-1304,Russia,57,Male,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,28.9,Low,No,No,No,No,Yes,No,No,No,No,No,No,No,No,Stage I,Chest X-Ray,Surgery,72,Yes
+LC-1327,Canada,75,Male,Never Smoked,0,0,Yes,No,No,Low,No Alcohol,30.0,Moderate,No,No,No,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,Stage II,PET Scan,Targeted Therapy,28,No
+LC-1337,Japan,59,Male,Former Smoker,12,12,Yes,No,No,Moderate,Moderate,27.7,Low,No,No,No,Yes,Yes,Yes,No,Yes,No,No,No,No,No,Stage III,CT Scan,Chemotherapy,15,No
+LC-1352,China,64,Male,Never Smoked,0,0,No,No,Yes,High,Moderate,33.2,Low,Yes,No,No,No,No,No,No,Yes,No,No,Yes,Yes,No,Stage II,Biopsy,Surgery,39,No
+LC-1358,Thailand,58,Male,Former Smoker,3,4,Yes,Yes,Yes,High,Heavy,35.7,Low,No,No,No,No,No,Yes,Yes,Yes,Yes,No,No,No,No,Stage II,Bronchoscopy,Immunotherapy,24,No
+LC-1359,Jordan,75,Male,Never Smoked,0,0,No,No,No,Low,Heavy,30.3,Moderate,No,No,No,No,No,No,No,No,No,Yes,No,No,Yes,Stage IV,CT Scan,Palliative Care,7,No
+LC-1368,Iraq,60,Female,Never Smoked,0,0,No,No,No,High,No Alcohol,32.2,High,No,No,No,Yes,Yes,No,No,Yes,No,No,No,No,No,Stage I,CT Scan,Targeted Therapy,57,No
+LC-1369,Thailand,56,Male,Never Smoked,0,0,No,No,Yes,Moderate,Moderate,28.4,Moderate,No,Yes,No,No,No,No,No,Yes,Yes,No,No,No,Yes,Stage I,PET Scan,Surgery,35,No
+LC-1384,New Zealand,78,Male,Never Smoked,0,0,No,No,No,Moderate,Moderate,24.2,Moderate,No,No,No,No,Yes,No,No,No,No,No,No,No,No,Stage I,CT Scan,Surgery,16,No
+LC-1403,Australia,56,Male,Never Smoked,0,0,No,No,No,Moderate,No Alcohol,29.0,Low,No,No,Yes,No,No,Yes,No,No,Yes,No,No,No,No,Stage II,Bronchoscopy,Radiotherapy,37,No
+LC-1404,New Zealand,52,Female,Never Smoked,0,0,Yes,No,No,High,Heavy,28.2,Low,No,No,No,No,No,Yes,No,Yes,Yes,No,Yes,No,No,Stage II,CT Scan,Surgery,30,No
+LC-1405,New Zealand,57,Male,Never Smoked,0,0,No,Yes,Yes,High,Moderate,25.0,High,No,No,No,Yes,No,No,No,Yes,No,No,Yes,No,No,Stage I,CT Scan,Surgery,60,No
+LC-1427,Morocco,54,Male,Never Smoked,0,0,No,No,No,Moderate,Heavy,26.7,Low,No,No,No,No,Yes,Yes,No,Yes,No,No,No,No,No,Stage IV,CT Scan,Targeted Therapy,5,No
+LC-1436,Brazil,68,Male,Never Smoked,0,0,Yes,No,No,Low,No Alcohol,18.6,Moderate,No,No,No,No,Yes,No,No,Yes,No,No,No,No,No,Stage IV,Biopsy,Palliative Care,14,No
+LC-1439,Malaysia,72,Male,Never Smoked,0,0,No,No,No,High,No Alcohol,24.1,Moderate,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Stage II,Biopsy,Surgery + Chemotherapy,40,Yes
+LC-1442,Malaysia,76,Female,Never Smoked,0,0,No,No,No,High,No Alcohol,22.6,Low,Yes,No,No,No,No,No,No,Yes,No,No,Yes,No,No,Stage I,CT Scan,Surgery,44,Yes
+LC-1449,USA,62,Male,Never Smoked,0,0,Yes,Yes,No,Moderate,Moderate,30.5,High,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,Stage IV,PET Scan,Chemo + Radiation,13,No
+LC-1450,Chile,48,Female,Never Smoked,0,0,Yes,No,No,Moderate,Moderate,30.5,Low,Yes,No,No,No,Yes,No,No,Yes,No,No,No,No,No,Stage I,Biopsy,Surgery,44,Yes
+LC-1457,Germany,53,Female,Never Smoked,0,0,No,No,Yes,Moderate,Moderate,29.9,High,No,No,Yes,Yes,No,No,No,Yes,Yes,No,No,No,No,Stage III,CT Scan,Chemo + Radiation,17,No
+LC-1462,China,63,Female,Never Smoked,0,0,Yes,No,No,High,Moderate,25.1,Moderate,No,No,No,No,No,No,No,Yes,No,No,Yes,No,No,Stage II,CT Scan,Radiotherapy,53,Yes
+LC-1477,India,53,Male,Current Smoker,37,24,No,No,No,High,Moderate,27.9,High,No,No,No,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,Stage I,PET Scan,Targeted Therapy,67,No
+LC-1480,Timor-Leste,76,Male,Current Smoker,26,35,Yes,No,No,High,Moderate,31.3,Low,No,No,No,Yes,Yes,No,Yes,Yes,Yes,No,No,No,No,Stage IV,PET Scan,Immunotherapy,1,No
+LC-1483,Mongolia,65,Male,Never Smoked,0,0,No,Yes,No,Low,No Alcohol,31.0,Low,No,No,No,Yes,No,Yes,No,Yes,No,No,Yes,No,No,Stage I,CT Scan,Surgery,45,No
+LC-1491,Bangladesh,70,Male,Never Smoked,0,0,Yes,No,No,Moderate,No Alcohol,29.2,High,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Stage II,CT Scan,Chemotherapy,47,No

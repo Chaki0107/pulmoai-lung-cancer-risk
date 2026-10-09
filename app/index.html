@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PulmoAI — Aide à la Décision Médicale</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  /* ── Reset & Base ─────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0B1B3A;
+    --blue:    #1651A8;
+    --sky:     #3B82F6;
+    --teal:    #0F9E7B;
+    --teal-lt: #D1FAF0;
+    --red:     #DC2626;
+    --amber:   #D97706;
+    --amber-lt:#FEF3C7;
+    --green:   #059669;
+    --green-lt:#D1FAE5;
+    --red-lt:  #FEE2E2;
+    --gray-0:  #F8FAFC;
+    --gray-1:  #F1F5F9;
+    --gray-2:  #E2E8F0;
+    --gray-3:  #CBD5E1;
+    --gray-5:  #64748B;
+    --gray-7:  #334155;
+    --gray-9:  #0F172A;
+    --white:   #FFFFFF;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius:  12px;
+    --shadow:  0 4px 24px rgba(11,27,58,0.10);
+    --shadow-lg: 0 8px 48px rgba(11,27,58,0.15);
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--gray-0);
+    color: var(--gray-9);
+    min-height: 100vh;
+  }
+
+  /* ── Header ───────────────────────────────── */
+  header {
+    background: var(--navy);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--sky);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-icon svg { width: 22px; height: 22px; }
+
+  .logo-text {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .header-badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-family: var(--font-body);
+  }
+
+  /* ── Layout ───────────────────────────────── */
+  .app {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── Hero section ─────────────────────────── */
+  .hero {
+    text-align: center;
+    padding: 48px 0 40px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 200px;
+    background: radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--teal-lt);
+    color: var(--teal);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 span { color: var(--sky); }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--gray-5);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Steps indicator ──────────────────────── */
+  .steps-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 36px 0;
+    position: relative;
+  }
+
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-connector {
+    height: 2px;
+    width: 60px;
+    background: var(--gray-2);
+    margin-bottom: 28px;
+    transition: background 0.5s;
+  }
+
+  .step-connector.active { background: var(--sky); }
+
+  .step-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.4s;
+    border: 2px solid var(--gray-2);
+    background: var(--white);
+    color: var(--gray-3);
+    cursor: pointer;
+  }
+
+  .step-num.done {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+  }
+
+  .step-num.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+    box-shadow: 0 0 0 4px rgba(11,27,58,0.12);
+  }
+
+  .step-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray-5);
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+  }
+
+  .step-item.active .step-label { color: var(--navy); font-weight: 600; }
+  .step-item.done .step-label { color: var(--teal); }
+
+  /* ── Cards ────────────────────────────────── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-2);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    margin-bottom: 24px;
+    display: none;
+    animation: fadeIn 0.35s ease;
+  }
+
+  .card.visible { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gray-1);
+  }
+
+  .card-icon {
+    width: 46px; height: 46px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .card-icon.blue   { background: #EFF6FF; color: var(--blue); }
+  .card-icon.teal   { background: var(--teal-lt); color: var(--teal); }
+  .card-icon.amber  { background: var(--amber-lt); color: var(--amber); }
+  .card-icon.green  { background: var(--green-lt); color: var(--green); }
+
+  .card-icon svg { width: 22px; height: 22px; }
+
+  .card-title {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-9);
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--gray-5);
+    margin-top: 2px;
+  }
+
+  /* ── Form ─────────────────────────────────── */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .form-grid.full  { grid-template-columns: 1fr; }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field.span2 { grid-column: span 2; }
+
+  label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input[type="number"],
+  select {
+    height: 42px;
+    border: 1.5px solid var(--gray-2);
+    border-radius: 8px;
+    padding: 0 14px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray-9);
+    background: var(--gray-0);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="number"]:focus,
+  select:focus {
+    border-color: var(--sky);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+    background: var(--white);
+  }
+
+  .section-sep {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 24px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-2);
+  }
+
+  /* ── Toggle chips ─────────────────────────── */
+  .chips-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--gray-2);
+    font-size: 13px;
+    color: var(--gray-5);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    background: var(--white);
+    font-family: var(--font-body);
+  }
+
+  .chip:hover { border-color: var(--sky); color: var(--sky); }
+
+  .chip.selected {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
+
+  /* ── Button ───────────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 28px;
+    border-radius: 10px;
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: -0.2px;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(11,27,58,0.25);
+  }
+
+  .btn-primary:hover {
+    background: var(--blue);
+    box-shadow: 0 6px 20px rgba(22,81,168,0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--gray-2);
+    color: var(--gray-7);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gray-3);
+    background: var(--gray-1);
+  }
+
+  .btn-teal {
+    background: var(--teal);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(15,158,123,0.3);
+  }
+
+  .btn-teal:hover {
+    background: #0b8a6a;
+    transform: translateY(-1px);
+  }
+
+  .btn-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--gray-1);
+  }
+
+  /* ── Result: Risk Score ───────────────────── */
+  .score-display {
+    text-align: center;
+    padding: 32px 0 24px;
+  }
+
+  .score-ring-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+  }
+
+  .score-ring-wrap svg { width: 160px; height: 160px; transform: rotate(-90deg); }
+
+  .score-ring-bg { fill: none; stroke: var(--gray-1); stroke-width: 12; }
+  .score-ring-fill {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1),
+                stroke 0.5s;
+  }
+
+  .score-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .score-number {
+    font-family: var(--font-head);
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--gray-9);
+  }
+
+  .score-max {
+    font-size: 13px;
+    color: var(--gray-5);
+    font-weight: 400;
+  }
+
+  .risk-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 22px;
+    border-radius: 24px;
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .risk-low    { background: var(--green-lt); color: var(--green); }
+  .risk-medium { background: var(--amber-lt); color: var(--amber); }
+  .risk-high   { background: var(--red-lt); color: var(--red); }
+
+  .risk-desc {
+    font-size: 14px;
+    color: var(--gray-5);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── Factor breakdown ─────────────────────── */
+  .factors-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .factor-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: var(--gray-0);
+    border: 1px solid var(--gray-1);
+  }
+
+  .factor-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .factor-name { font-size: 13px; color: var(--gray-7); flex: 1; }
+
+  .factor-bar-wrap {
+    width: 100px;
+    height: 6px;
+    background: var(--gray-2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .factor-bar {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+
+  .factor-pts {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-7);
+    min-width: 32px;
+    text-align: right;
+  }
+
+  /* ── Stage estimation ─────────────────────── */
+  .stage-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .stage-card {
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stage-card.predicted {
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(11,27,58,0.08);
+  }
+
+  .stage-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+  }
+
+  .stage-num {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .stage-name {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin-bottom: 8px;
+  }
+
+  .stage-prob {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .stage-prob-label { font-size: 10px; color: var(--gray-5); margin-top: 2px; }
+
+  .predicted-badge {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* ── Symptom tags in result ───────────────── */
+  .sym-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 3px;
+  }
+
+  .sym-tag.critical { background: var(--red-lt); color: var(--red); }
+  .sym-tag.moderate { background: var(--amber-lt); color: var(--amber); }
+  .sym-tag.normal   { background: var(--gray-1); color: var(--gray-5); }
+
+  /* ── Exams recommendations ────────────────── */
+  .exam-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .exam-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-2);
+    background: var(--white);
+    transition: box-shadow 0.2s;
+    animation: slideIn 0.4s ease both;
+  }
+
+  .exam-item:hover { box-shadow: var(--shadow); }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .exam-priority {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .p-urgent  { background: var(--red-lt); }
+  .p-high    { background: var(--amber-lt); }
+  .p-medium  { background: #EFF6FF; }
+
+  .exam-info { flex: 1; }
+
+  .exam-name {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-9);
+    margin-bottom: 4px;
+  }
+
+  .exam-reason {
+    font-size: 13px;
+    color: var(--gray-5);
+    line-height: 1.5;
+  }
+
+  .exam-badge {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+    font-family: var(--font-head);
+  }
+
+  .b-urgent  { background: var(--red-lt); color: var(--red); }
+  .b-high    { background: var(--amber-lt); color: var(--amber); }
+  .b-medium  { background: #EFF6FF; color: var(--blue); }
+
+  /* ── Summary card ─────────────────────────── */
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-1);
+    font-size: 14px;
+  }
+
+  .summary-row:last-child { border-bottom: none; }
+  .summary-key { color: var(--gray-5); }
+  .summary-val { font-weight: 500; color: var(--gray-9); text-align: right; }
+
+  /* ── Alert box ────────────────────────────── */
+  .alert-box {
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+
+  .alert-box.info    { background: #EFF6FF; color: #1E40AF; border-left: 3px solid var(--sky); }
+  .alert-box.warning { background: var(--amber-lt); color: #92400E; border-left: 3px solid var(--amber); }
+  .alert-box.success { background: var(--green-lt); color: #065F46; border-left: 3px solid var(--green); }
+  .alert-box.danger  { background: var(--red-lt); color: #991B1B; border-left: 3px solid var(--red); }
+
+  /* ── Reset button ─────────────────────────── */
+  .reset-btn {
+    display: block;
+    margin: 32px auto 0;
+    background: transparent;
+    border: 1.5px solid var(--gray-2);
+    color: var(--gray-5);
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .reset-btn:hover {
+    border-color: var(--gray-3);
+    color: var(--gray-7);
+    background: var(--gray-1);
+  }
+
+  /* ── Disclaimer ───────────────────────────── */
+  .disclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-3);
+    margin-top: 48px;
+    padding: 20px;
+    border-top: 1px solid var(--gray-2);
+    line-height: 1.8;
+  }
+
+  /* ── Responsive ───────────────────────────── */
+  @media (max-width: 640px) {
+    .form-grid        { grid-template-columns: 1fr; }
+    .form-grid.three  { grid-template-columns: 1fr 1fr; }
+    .field.span2      { grid-column: span 1; }
+    .stage-grid       { grid-template-columns: repeat(2, 1fr); }
+    header            { padding: 0 16px; }
+    .app              { padding: 24px 14px 60px; }
+    .card             { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════ -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+        <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
+        <path d="M12 8v8M8 12h8"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-text">PulmoAI</div>
+      <div class="logo-sub">Aide à la Décision Médicale</div>
+    </div>
+  </div>
+  <div class="header-badge">Cancer du Poumon · Prototype Académique</div>
+</header>
+
+<!-- ══ APP ═════════════════════════════════════════════ -->
+<div class="app">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">Outil de prédiction clinique</div>
+    <h1>Évaluation du risque<br><span>cancer pulmonaire</span></h1>
+    <p>Renseignez les facteurs du patient pour obtenir un score de risque, une estimation du stade probable et des recommandations d'examens.</p>
+  </div>
+
+  <!-- Steps Bar -->
+  <div class="steps-bar">
+    <div class="step-item active" id="si-1">
+      <div class="step-num active" id="sn-1">1</div>
+      <div class="step-label">Facteurs patient</div>
+    </div>
+    <div class="step-connector" id="sc-1"></div>
+    <div class="step-item" id="si-2">
+      <div class="step-num" id="sn-2">2</div>
+      <div class="step-label">Score de risque</div>
+    </div>
+    <div class="step-connector" id="sc-2"></div>
+    <div class="step-item" id="si-3">
+      <div class="step-num" id="sn-3">3</div>
+      <div class="step-label">Stade estimé</div>
+    </div>
+    <div class="step-connector" id="sc-3"></div>
+    <div class="step-item" id="si-4">
+      <div class="step-num" id="sn-4">4</div>
+      <div class="step-label">Examens</div>
+    </div>
+  </div>
+
+  <!-- ── STEP 1 : FORM ──────────────────────── -->
+  <div class="card visible" id="card-1">
+    <div class="card-header">
+      <div class="card-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <div>
+        <div class="card-title">Données du patient</div>
+        <div class="card-desc">Renseignez les informations cliniques et environnementales</div>
+      </div>
+    </div>
+
+    <!-- Démographie -->
+    <div class="section-sep">Démographie</div>
+    <div class="form-grid three">
+      <div class="field">
+        <label>Âge</label>
+        <input type="number" id="age" min="18" max="100" placeholder="Ex: 58"/>
+      </div>
+      <div class="field">
+        <label>Genre</label>
+        <select id="gender">
+          <option value="">— Sélectionner —</option>
+          <option value="Male">Homme</option>
+          <option value="Female">Femme</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>IMC (kg/m²)</label>
+        <input type="number" id="bmi" min="10" max="60" step="0.1" placeholder="Ex: 24.5"/>
+      </div>
+    </div>
+
+    <!-- Tabagisme -->
+    <div class="section-sep">Tabagisme</div>
+    <div class="form-grid three">
+      <div class="field">
+        <label>Statut tabagique</label>
+        <select id="smoking_status">
+          <option value="">— Sélectionner —</option>
+          <option value="Current Smoker">Fumeur actif</option>
+          <option value="Former Smoker">Ex-fumeur</option>
+          <option value="Never Smoked">Non-fumeur</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Cigarettes / jour</label>
+        <input type="number" id="cigarettes" min="0" max="100" placeholder="0 si non-fumeur"/>
+      </div>
+      <div class="field">
+        <label>Années de tabagisme</label>
+        <input type="number" id="years_smoking" min="0" max="70" placeholder="0 si non-fumeur"/>
+      </div>
+    </div>
+
+    <!-- Mode de vie -->
+    <div class="section-sep">Mode de vie</div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Consommation d'alcool</label>
+        <select id="alcohol">
+          <option value="No Alcohol">Aucune</option>
+          <option value="Moderate">Modérée</option>
+          <option value="Heavy">Élevée</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Activité physique</label>
+        <select id="exercise">
+          <option value="Low">Faible</option>
+          <option value="Moderate">Modérée</option>
+          <option value="High">Élevée</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Facteurs environnementaux -->
+    <div class="section-sep">Facteurs environnementaux</div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Exposition pollution de l'air</label>
+        <select id="pollution">
+          <option value="Low">Faible</option>
+          <option value="Moderate">Modérée</option>
+          <option value="High">Élevée</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Fumée passive (domicile/travail)</label>
+        <select id="secondhand">
+          <option value="false">Non</option>
+          <option value="true">Oui</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Exposition amiante</label>
+        <select id="asbestos">
+          <option value="false">Non</option>
+          <option value="true">Oui</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Exposition radon</label>
+        <select id="radon">
+          <option value="false">Non</option>
+          <option value="true">Oui</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Facteurs cliniques -->
+    <div class="section-sep">Antécédents cliniques</div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Risque professionnel (poussières, vapeurs)</label>
+        <select id="occupational">
+          <option value="false">Non</option>
+          <option value="true">Oui</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Antécédents familiaux de cancer</label>
+        <select id="family">
+          <option value="false">Non</option>
+          <option value="true">Oui</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Antécédents personnels de cancer</label>
+        <select id="prev_cancer">
+          <option value="false">Non</option>
+          <option value="true">Oui</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Méthode de diagnostic existante</label>
+        <select id="diagnosis_method">
+          <option value="None">Aucune</option>
+          <option value="CT Scan">Scanner CT</option>
+          <option value="LDCT Screening">LDCT Dépistage</option>
+          <option value="Biopsy">Biopsie</option>
+          <option value="MRI">IRM</option>
+          <option value="PET Scan">PET Scan</option>
+          <option value="Bronchoscopy">Bronchoscopie</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Symptômes -->
+    <div class="section-sep">Symptômes présents</div>
+    <div class="chips-grid" id="symptoms-chips">
+      <div class="chip" data-val="Coughing">Toux persistante</div>
+      <div class="chip" data-val="Shortness of Breath">Essoufflement</div>
+      <div class="chip" data-val="Chest Pain">Douleur thoracique</div>
+      <div class="chip" data-val="Coughing Blood">Toux avec sang</div>
+      <div class="chip" data-val="Fatigue">Fatigue intense</div>
+      <div class="chip" data-val="Weight Loss">Perte de poids</div>
+      <div class="chip" data-val="Wheezing">Sifflement respiratoire</div>
+      <div class="chip" data-val="Recurrent Infections">Infections récurrentes</div>
+      <div class="chip" data-val="Swallowing Difficulty">Difficulté à avaler</div>
+      <div class="chip" data-val="Finger Clubbing">Hippocratisme digital</div>
+    </div>
+
+    <div class="btn-actions">
+      <button class="btn btn-primary" onclick="analyzeRisk()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Analyser le risque
+      </button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2 : RISK SCORE ────────────────── -->
+  <div class="card" id="card-2">
+    <div class="card-header">
+      <div class="card-icon teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <div>
+        <div class="card-title">Score de risque calculé</div>
+        <div class="card-desc">Niveau 1 — Évaluation des facteurs de risque combinés</div>
+      </div>
+    </div>
+
+    <!-- Score ring -->
+    <div class="score-display">
+      <div class="score-ring-wrap">
+        <svg viewBox="0 0 160 160">
+          <circle class="score-ring-bg" cx="80" cy="80" r="64"/>
+          <circle class="score-ring-fill" id="ring-fill" cx="80" cy="80" r="64"
+            stroke-dasharray="402.1"
+            stroke-dashoffset="402.1"
+            stroke="#0F9E7B"/>
+        </svg>
+        <div class="score-center">
+          <div class="score-number" id="score-number">0</div>
+          <div class="score-max">/10</div>
+        </div>
+      </div>
+
+      <div class="risk-label" id="risk-label">—</div>
+      <div class="risk-desc" id="risk-desc"></div>
+    </div>
+
+    <!-- Facteur breakdown -->
+    <div class="section-sep">Détail des facteurs</div>
+    <div class="factors-list" id="factors-list"></div>
+
+    <!-- Symptoms summary -->
+    <div class="section-sep">Symptômes renseignés</div>
+    <div id="symptoms-display" style="padding: 4px 0;"></div>
+
+    <div class="btn-actions">
+      <button class="btn btn-primary" onclick="goStep(3)" id="btn-stage">
+        Estimer le stade probable →
+      </button>
+      <button class="btn btn-outline" onclick="goStep(1)">← Modifier</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3 : STAGE ESTIMATION ─────────── -->
+  <div class="card" id="card-3">
+    <div class="card-header">
+      <div class="card-icon amber">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="card-title">Estimation du stade probable</div>
+        <div class="card-desc">Niveau 2 — Modèle basé sur les symptômes et facteurs cliniques</div>
+      </div>
+    </div>
+
+    <div id="stage-content"></div>
+
+    <div class="btn-actions">
+      <button class="btn btn-teal" onclick="goStep(4)">
+        Voir les examens recommandés →
+      </button>
+      <button class="btn btn-outline" onclick="goStep(2)">← Retour</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4 : EXAMS ─────────────────────── -->
+  <div class="card" id="card-4">
+    <div class="card-header">
+      <div class="card-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+        </svg>
+      </div>
+      <div>
+        <div class="card-title">Examens recommandés</div>
+        <div class="card-desc">Niveau 3 — Protocole adapté au profil du patient</div>
+      </div>
+    </div>
+
+    <div id="exams-content"></div>
+
+    <!-- Résumé patient -->
+    <div class="section-sep" style="margin-top: 28px;">Résumé du bilan</div>
+    <div id="summary-content"></div>
+
+    <button class="reset-btn" onclick="resetAll()">↺ Nouvelle évaluation</button>
+  </div>
+
+  <div class="disclaimer">
+    ⚕ PulmoAI est un outil académique de simulation — non certifié pour usage médical réel.<br>
+    Tout diagnostic doit être confirmé par un médecin spécialiste habilité.<br>
+    Données basées sur le Lung Cancer Dataset 
+  </div>
+
+</div>
+
+<!-- ══ SCRIPT ═══════════════════════════════════════════ -->
+<script>
+// ── State ──────────────────────────────────────────────
+let state = {
+  step: 1,
+  score: 0,
+  riskLevel: '',
+  factors: [],
+  symptoms: [],
+  stageProbs: {},
+  predictedStage: '',
+  exams: []
+};
+
+// ── Symptom chips ──────────────────────────────────────
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('selected');
+  });
+});
+
+function getSelectedSymptoms() {
+  return [...document.querySelectorAll('.chip.selected')].map(c => c.dataset.val);
+}
+
+// ── Step navigation ────────────────────────────────────
+function goStep(n) {
+  document.querySelectorAll('.card').forEach((c, i) => {
+    c.classList.toggle('visible', i + 1 === n);
+  });
+  state.step = n;
+  updateStepBar(n);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateStepBar(active) {
+  for (let i = 1; i <= 4; i++) {
+    const num = document.getElementById(`sn-${i}`);
+    const item = document.getElementById(`si-${i}`);
+    num.className = 'step-num';
+    item.className = 'step-item';
+    if (i < active) { num.classList.add('done');   item.classList.add('done');   }
+    if (i === active){ num.classList.add('active'); item.classList.add('active'); }
+  }
+  for (let i = 1; i <= 3; i++) {
+    const conn = document.getElementById(`sc-${i}`);
+    conn.classList.toggle('active', i < active);
+  }
+}
+
+// ── Risk scoring engine ────────────────────────────────
+function computeRisk() {
+  const age          = parseInt(document.getElementById('age').value) || 50;
+  const smokingStatus= document.getElementById('smoking_status').value;
+  const cigarettes   = parseInt(document.getElementById('cigarettes').value) || 0;
+  const yearsSmoke   = parseInt(document.getElementById('years_smoking').value) || 0;
+  const pollution    = document.getElementById('pollution').value;
+  const secondhand   = document.getElementById('secondhand').value === 'true';
+  const asbestos     = document.getElementById('asbestos').value === 'true';
+  const radon        = document.getElementById('radon').value === 'true';
+  const occupational = document.getElementById('occupational').value === 'true';
+  const family       = document.getElementById('family').value === 'true';
+  const prevCancer   = document.getElementById('prev_cancer').value === 'true';
+  const bmi          = parseFloat(document.getElementById('bmi').value) || 22;
+  const exercise     = document.getElementById('exercise').value;
+  const alcohol      = document.getElementById('alcohol').value;
+  const symptoms     = getSelectedSymptoms();
+
+  const factors = [];
+  let total = 0;
+
+  function add(name, pts, max, color) {
+    const capped = Math.min(pts, max);
+    total += capped;
+    if (capped > 0) factors.push({ name, pts: capped, max, color });
+  }
+
+  // Tabagisme (max 3.5)
+  if (smokingStatus === 'Current Smoker') {
+    add('Fumeur actif', 2.5, 2.5, '#DC2626');
+    const packYears = (cigarettes / 20) * yearsSmoke;
+    add('Pack-years cumulés', Math.min(packYears / 25, 1.0), 1.0, '#DC2626');
+  } else if (smokingStatus === 'Former Smoker') {
+    add('Ex-fumeur', 1.0, 1.0, '#D97706');
+    const packYears = (cigarettes / 20) * yearsSmoke;
+    add('Pack-years (ancien)', Math.min(packYears / 40, 0.5), 0.5, '#D97706');
+  }
+
+  // Âge (max 1.0)
+  const agePts = age >= 65 ? 1.0 : age >= 55 ? 0.6 : age >= 45 ? 0.3 : 0;
+  add('Âge (facteur de risque)', agePts, 1.0, '#7C3AED');
+
+  // Environnement (max 2.0)
+  const pollPts = pollution === 'High' ? 0.6 : pollution === 'Moderate' ? 0.3 : 0;
+  add('Pollution atmosphérique', pollPts, 0.6, '#0F9E7B');
+  if (asbestos)     add('Exposition amiante',   0.7, 0.7, '#0F9E7B');
+  if (radon)        add('Exposition radon',      0.4, 0.4, '#0F9E7B');
+  if (secondhand)   add('Fumée passive',         0.3, 0.3, '#0F9E7B');
+  if (occupational) add('Risque professionnel',  0.4, 0.4, '#0F9E7B');
+
+  // Antécédents (max 1.5)
+  if (family)     add('Antécédents familiaux',   0.8, 0.8, '#1651A8');
+  if (prevCancer) add('Cancer personnel antérieur', 0.7, 0.7, '#1651A8');
+
+  // Symptômes (max 1.5)
+  const criticalSyms = ['Coughing Blood', 'Finger Clubbing', 'Swallowing Difficulty'];
+  const highSyms = ['Chest Pain', 'Shortness of Breath', 'Weight Loss'];
+  let symPts = 0;
+  symptoms.forEach(s => {
+    if (criticalSyms.includes(s))  symPts += 0.5;
+    else if (highSyms.includes(s)) symPts += 0.3;
+    else                           symPts += 0.15;
+  });
+  add('Symptômes présents', Math.min(symPts, 1.5), 1.5, '#0B1B3A');
+
+  // Mode de vie (max 0.5)
+  let lifePts = 0;
+  if (bmi > 30)             lifePts += 0.15;
+  if (alcohol === 'Heavy')  lifePts += 0.15;
+  if (exercise === 'Low')   lifePts += 0.15;
+  add('Facteurs de mode de vie', Math.min(lifePts, 0.45), 0.45, '#64748B');
+
+  total = Math.min(Math.round(total * 10) / 10, 10);
+  return { total, factors, symptoms };
+}
+
+// ── Stage estimation engine ────────────────────────────
+function estimateStage(score, symptoms) {
+  const critSym = ['Coughing Blood','Swallowing Difficulty','Finger Clubbing','Weight Loss'];
+  const critCount = symptoms.filter(s => critSym.includes(s)).length;
+  const totalSym  = symptoms.length;
+
+  let probs = { 'Stage I': 40, 'Stage II': 30, 'Stage III': 20, 'Stage IV': 10 };
+
+  // Adjust by score
+  if (score >= 8) {
+    probs = { 'Stage I': 10, 'Stage II': 20, 'Stage III': 35, 'Stage IV': 35 };
+  } else if (score >= 6) {
+    probs = { 'Stage I': 20, 'Stage II': 28, 'Stage III': 32, 'Stage IV': 20 };
+  } else if (score >= 4) {
+    probs = { 'Stage I': 35, 'Stage II': 30, 'Stage III': 22, 'Stage IV': 13 };
+  }
+
+  // Adjust by symptoms
+  if (critCount >= 2) {
+    probs['Stage III'] += 10;
+    probs['Stage IV']  += 10;
+    probs['Stage I']   -= 10;
+    probs['Stage II']  -= 10;
+  }
+  if (totalSym >= 5) {
+    probs['Stage III'] += 5;
+    probs['Stage IV']  += 5;
+    probs['Stage I']   -= 5;
+    probs['Stage II']  -= 5;
+  }
+
+  // Normalize
+  const sum = Object.values(probs).reduce((a,b) => a+b, 0);
+  Object.keys(probs).forEach(k => probs[k] = Math.round(probs[k] / sum * 100));
+
+  const predicted = Object.entries(probs).sort((a,b) => b[1]-a[1])[0][0];
+  return { probs, predicted };
+}
+
+// ── Exams recommendations engine ──────────────────────
+function getExams(score, riskLevel, predictedStage, symptoms) {
+  const exams = [];
+  const hasCoughBlood = symptoms.includes('Coughing Blood');
+  const hasChestPain  = symptoms.includes('Chest Pain');
+  const isAdvanced    = ['Stage III','Stage IV'].includes(predictedStage);
+
+  if (riskLevel === 'Élevé' || score >= 6) {
+    exams.push({
+      name: 'LDCT — Scanner thoracique faible dose',
+      reason: 'Examen de référence pour le dépistage du cancer pulmonaire chez les patients à haut risque. Détecte les nodules dès 3 mm.',
+      priority: 'urgent', icon: '🫁', badge: 'Urgent', delay: 0
+    });
+    exams.push({
+      name: 'Bilan biologique complet',
+      reason: 'NFS, CRP, LDH, CEA, CYFRA 21-1, NSE. Évaluation de la réponse inflammatoire et des marqueurs tumoraux.',
+      priority: 'urgent', icon: '🩸', badge: 'Urgent', delay: 50
+    });
+  } else if (riskLevel === 'Modéré') {
+    exams.push({
+      name: 'Radiographie thoracique',
+      reason: 'Premier examen d\'orientation pour détecter les anomalies pulmonaires chez un patient à risque modéré.',
+      priority: 'high', icon: '🩻', badge: 'Prioritaire', delay: 0
+    });
+    exams.push({
+      name: 'Bilan biologique',
+      reason: 'NFS, CRP, LDH, CYFRA 21-1. Bilan initial de surveillance.',
+      priority: 'high', icon: '🩸', badge: 'Prioritaire', delay: 50
+    });
+  } else {
+    exams.push({
+      name: 'Consultation pneumologique',
+      reason: 'Surveillance standard recommandée. Une consultation spécialisée permet d\'établir un suivi préventif adapté.',
+      priority: 'medium', icon: '👨‍⚕️', badge: 'Programmé', delay: 0
+    });
+  }
+
+  if (hasCoughBlood) {
+    exams.push({
+      name: 'Bronchoscopie',
+      reason: 'Hémoptysie signalée — exploration endoscopique des voies aériennes indispensable pour localiser la source.',
+      priority: 'urgent', icon: '🔬', badge: 'Urgent', delay: 100
+    });
+  }
+
+  if (isAdvanced) {
+    exams.push({
+      name: 'TEP-Scanner (PET-CT)',
+      reason: 'Évaluation de l\'extension métastatique en cas de stade avancé suspecté. Bilan d\'extension systématique.',
+      priority: 'high', icon: '📡', badge: 'Prioritaire', delay: 150
+    });
+    exams.push({
+      name: 'Biopsie guidée (CT/écho)',
+      reason: 'Confirmation histologique et analyse moléculaire (mutations EGFR, ALK, KRAS, ROS1) pour orienter la thérapie ciblée.',
+      priority: 'high', icon: '💉', badge: 'Prioritaire', delay: 200
+    });
+  }
+
+  if (hasChestPain || isAdvanced) {
+    exams.push({
+      name: 'IRM thoracique',
+      reason: 'Évaluation des structures médiastinales et de l\'extension locale. Complément au scanner pour les stades III–IV.',
+      priority: 'medium', icon: '🧲', badge: 'Complémentaire', delay: 250
+    });
+  }
+
+  exams.push({
+    name: 'Spirométrie (EFR)',
+    reason: 'Évaluation de la fonction respiratoire. Indispensable avant toute décision thérapeutique chirurgicale.',
+    priority: 'medium', icon: '💨', badge: 'Complémentaire', delay: 300
+  });
+
+  return exams;
+}
+
+// ── Main analysis function ─────────────────────────────
+function analyzeRisk() {
+  const { total, factors, symptoms } = computeRisk();
+  state.score   = total;
+  state.factors = factors;
+  state.symptoms = symptoms;
+
+  let riskLevel, riskDesc, ringColor;
+  if (total <= 3) {
+    riskLevel = 'Risque Faible';
+    riskDesc  = 'Le profil du patient présente peu de facteurs de risque cumulés. Une surveillance standard et un suivi préventif annuel sont recommandés.';
+    ringColor = '#059669';
+    state.riskLevel = 'Faible';
+  } else if (total <= 6) {
+    riskLevel = 'Risque Modéré';
+    riskDesc  = 'Plusieurs facteurs de risque sont présents. Des examens complémentaires sont conseillés pour écarter un cancer pulmonaire.';
+    ringColor = '#D97706';
+    state.riskLevel = 'Modéré';
+  } else {
+    riskLevel = 'Risque Élevé';
+    riskDesc  = 'Le profil présente une accumulation significative de facteurs de risque. Un bilan complet et urgent est fortement recommandé.';
+    ringColor = '#DC2626';
+    state.riskLevel = 'Élevé';
+  }
+
+  // Animate ring
+  const circumference = 402.1;
+  const offset = circumference - (total / 10) * circumference;
+  const ring = document.getElementById('ring-fill');
+  ring.style.stroke = ringColor;
+  setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
+
+  // Animate number
+  let displayed = 0;
+  const numEl = document.getElementById('score-number');
+  const step = total / 40;
+  const interval = setInterval(() => {
+    displayed = Math.min(displayed + step, total);
+    numEl.textContent = displayed.toFixed(1);
+    if (displayed >= total) { numEl.textContent = total.toFixed(1); clearInterval(interval); }
+  }, 30);
+
+  // Risk label
+  const labelEl = document.getElementById('risk-label');
+  labelEl.textContent = riskLevel;
+  labelEl.className = `risk-label risk-${state.riskLevel === 'Faible' ? 'low' : state.riskLevel === 'Modéré' ? 'medium' : 'high'}`;
+  document.getElementById('risk-desc').textContent = riskDesc;
+
+  // Factors breakdown
+  const listEl = document.getElementById('factors-list');
+  listEl.innerHTML = '';
+  const maxPts = Math.max(...factors.map(f => f.pts), 0.1);
+  factors.sort((a,b) => b.pts - a.pts).forEach(f => {
+    const pct = (f.pts / maxPts) * 100;
+    listEl.innerHTML += `
+      <div class="factor-row">
+        <div class="factor-dot" style="background:${f.color}"></div>
+        <div class="factor-name">${f.name}</div>
+        <div class="factor-bar-wrap">
+          <div class="factor-bar" style="width:${pct}%;background:${f.color}"></div>
+        </div>
+        <div class="factor-pts">+${f.pts.toFixed(1)}</div>
+      </div>`;
+  });
+  if (factors.length === 0) {
+    listEl.innerHTML = '<div class="factor-row"><div class="factor-name" style="color:var(--gray-5)">Aucun facteur de risque significatif identifié</div></div>';
+  }
+
+  // Symptoms display
+  const symEl = document.getElementById('symptoms-display');
+  if (symptoms.length === 0) {
+    symEl.innerHTML = '<span style="font-size:13px;color:var(--gray-5)">Aucun symptôme renseigné</span>';
+  } else {
+    const critical = ['Coughing Blood','Finger Clubbing','Swallowing Difficulty'];
+    const high     = ['Chest Pain','Shortness of Breath','Weight Loss'];
+    symEl.innerHTML = symptoms.map(s => {
+      const cls = critical.includes(s) ? 'critical' : high.includes(s) ? 'moderate' : 'normal';
+      return `<span class="sym-tag ${cls}">${s}</span>`;
+    }).join('');
+  }
+
+  goStep(2);
+}
+
+// ── Stage step ─────────────────────────────────────────
+const origGoStep = goStep;
+function goStep(n) {
+  if (n === 3) renderStage();
+  if (n === 4) renderExams();
+  document.querySelectorAll('.card').forEach((c, i) => {
+    c.classList.toggle('visible', i + 1 === n);
+  });
+  state.step = n;
+  updateStepBar(n);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderStage() {
+  const { probs, predicted } = estimateStage(state.score, state.symptoms);
+  state.stageProbs    = probs;
+  state.predictedStage = predicted;
+
+  const colors = {
+    'Stage I':   { bg:'#D1FAE5', text:'#065F46', num:'#059669' },
+    'Stage II':  { bg:'#FEF3C7', text:'#92400E', num:'#D97706' },
+    'Stage III': { bg:'#FEE2E2', text:'#991B1B', num:'#DC2626' },
+    'Stage IV':  { bg:'#FEE2E2', text:'#7F1D1D', num:'#991B1B' }
+  };
+
+  const stageDesc = {
+    'Stage I':   'Tumeur localisée, aucune propagation aux ganglions ou autres organes.',
+    'Stage II':  'Tumeur plus large ou avec atteinte de quelques ganglions proches.',
+    'Stage III': 'Propagation aux ganglions médiastinaux. Traitement multimodal requis.',
+    'Stage IV':  'Métastases à distance détectées. Traitement systémique nécessaire.'
+  };
+
+  const isLowRisk = state.riskLevel === 'Faible';
+  let html = '';
+
+  if (isLowRisk) {
+    html += `
+      <div class="alert-box success" style="margin-bottom:20px">
+        <span style="font-size:18px">✓</span>
+        <div>Score de risque faible (${state.score}/10) — L'estimation du stade est indicative uniquement. Aucun élément fort ne suggère un cancer pulmonaire actif.</div>
+      </div>`;
+  } else {
+    html += `
+      <div class="alert-box ${state.riskLevel === 'Élevé' ? 'danger' : 'warning'}" style="margin-bottom:20px">
+        <span style="font-size:18px">${state.riskLevel === 'Élevé' ? '⚠' : '!'}</span>
+        <div>Risque ${state.riskLevel.toLowerCase()} détecté (${state.score}/10). Le stade estimé ci-dessous est une probabilité statistique — confirmation par examens indispensable.</div>
+      </div>`;
+  }
+
+  html += '<div class="stage-grid">';
+  Object.entries(probs).forEach(([stage, prob]) => {
+    const c = colors[stage];
+    const isPredicted = stage === predicted && !isLowRisk;
+    html += `
+      <div class="stage-card ${isPredicted ? 'predicted' : ''}" style="background:${c.bg}20;border-color:${isPredicted ? '#0B1B3A' : c.bg}">
+        ${isPredicted ? '<div class="predicted-badge">Estimé</div>' : ''}
+        <div class="stage-num" style="color:${c.num}">${stage.replace('Stage ','')}</div>
+        <div class="stage-name" style="color:${c.text}">${stage}</div>
+        <div class="stage-prob" style="color:${c.num}">${prob}%</div>
+        <div class="stage-prob-label">Probabilité</div>
+      </div>`;
+  });
+  html += '</div>';
+
+  if (!isLowRisk) {
+    html += `
+      <div class="alert-box info" style="margin-top:16px">
+        <span style="font-size:16px">ℹ</span>
+        <div><strong>${predicted}</strong> — ${stageDesc[predicted]}</div>
+      </div>`;
+  }
+
+  document.getElementById('stage-content').innerHTML = html;
+}
+
+function renderExams() {
+  const exams = getExams(state.score, state.riskLevel, state.predictedStage, state.symptoms);
+  state.exams = exams;
+
+  const priMap = {
+    urgent: { cls: 'p-urgent', badgeCls: 'b-urgent' },
+    high:   { cls: 'p-high',   badgeCls: 'b-high' },
+    medium: { cls: 'p-medium', badgeCls: 'b-medium' }
+  };
+
+  let html = '<div class="exam-list">';
+  exams.forEach((e, i) => {
+    const p = priMap[e.priority];
+    html += `
+      <div class="exam-item" style="animation-delay:${e.delay}ms">
+        <div class="exam-priority ${p.cls}">${e.icon}</div>
+        <div class="exam-info">
+          <div class="exam-name">${e.name}</div>
+          <div class="exam-reason">${e.reason}</div>
+        </div>
+        <span class="exam-badge ${p.badgeCls}">${e.badge}</span>
+      </div>`;
+  });
+  html += '</div>';
+
+  const alertType = state.riskLevel === 'Élevé' ? 'danger' : state.riskLevel === 'Modéré' ? 'warning' : 'success';
+  html += `
+    <div class="alert-box ${alertType}" style="margin-top:16px">
+      <span style="font-size:18px">${state.riskLevel === 'Élevé' ? '🚨' : state.riskLevel === 'Modéré' ? '⚠️' : '✅'}</span>
+      <div>Ces recommandations sont générées automatiquement selon le profil du patient. Le médecin traitant reste seul juge de la conduite à tenir.</div>
+    </div>`;
+
+  document.getElementById('exams-content').innerHTML = html;
+
+  // Summary
+  const age  = document.getElementById('age').value || '—';
+  const gmap = { Male: 'Homme', Female: 'Femme', '': '—' };
+  const smap = { 'Current Smoker': 'Fumeur actif', 'Former Smoker': 'Ex-fumeur', 'Never Smoked': 'Non-fumeur', '': '—' };
+  const sumRows = [
+    ['Âge', `${age} ans`],
+    ['Genre', gmap[document.getElementById('gender').value] || '—'],
+    ['Statut tabagique', smap[document.getElementById('smoking_status').value] || '—'],
+    ['Score de risque', `${state.score}/10`],
+    ['Niveau de risque', state.riskLevel],
+    ['Stade estimé', state.riskLevel === 'Faible' ? 'Non applicable' : state.predictedStage],
+    ['Symptômes', state.symptoms.length > 0 ? state.symptoms.join(', ') : 'Aucun'],
+    ['Examens recommandés', exams.length.toString()],
+  ];
+
+  let sumHtml = '';
+  sumRows.forEach(([k,v]) => {
+    sumHtml += `<div class="summary-row"><span class="summary-key">${k}</span><span class="summary-val">${v}</span></div>`;
+  });
+  document.getElementById('summary-content').innerHTML = sumHtml;
+}
+
+// ── Reset ──────────────────────────────────────────────
+function resetAll() {
+  document.querySelectorAll('input[type="number"]').forEach(i => i.value = '');
+  document.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  document.getElementById('ring-fill').style.strokeDashoffset = '402.1';
+  state = { step:1, score:0, riskLevel:'', factors:[], symptoms:[], stageProbs:{}, predictedStage:'', exams:[] };
+  goStep(1);
+}
+</script>
+</body>
+</html>
